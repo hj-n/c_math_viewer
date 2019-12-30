@@ -1,0 +1,4 @@
+
+class Add extends Pattern {
+
+}

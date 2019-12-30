@@ -1,0 +1,4 @@
+
+class Pow extends Pattern {
+
+}
