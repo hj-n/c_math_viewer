@@ -10,7 +10,7 @@ enum LogType {
 class Log extends Pattern {
     type : LogType
 
-    constructor(first : Pattern, second : Pattern, type : LogType) {
+    constructor(first : Formula, second : Formula, type : LogType) {
         super(first, second);
         this.type = type;
     }

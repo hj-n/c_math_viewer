@@ -6,7 +6,7 @@ enum RootType {
 class Root extends Pattern {
     type : RootType;
 
-    constructor(first : Pattern, second : Pattern, type : RootType) {
+    constructor(first : Formula, second : Formula, type : RootType) {
         super(first, second);
         this.type = type;
     }

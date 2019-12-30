@@ -12,7 +12,7 @@ enum HypType {
 class Hyp extends Pattern {
     private type : HypType;
 
-    constructor(first : Pattern, second : Pattern, type : HypType) {
+    constructor(first : Formula, second : Formula, type : HypType) {
         super(first, second);
         this.type = type;
     }

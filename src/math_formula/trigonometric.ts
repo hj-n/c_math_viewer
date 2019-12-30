@@ -12,7 +12,7 @@ enum TriType {
 class Tri extends Pattern {
     private type : TriType;
     
-    constructor(first : Pattern, second : Pattern, type : TriType) {
+    constructor(first : Formula, second : Formula, type : TriType) {
         super(first, second);
         this.type = type;
     }

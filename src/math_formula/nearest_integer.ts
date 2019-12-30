@@ -5,7 +5,7 @@ enum NearType {
 class Near extends Pattern {
     type : NearType;
 
-    constructor(first : Pattern, second : Pattern, type : NearType) {
+    constructor(first : Formula, second : Formula, type : NearType) {
         super(first, second);
         this.type = type;
     }
