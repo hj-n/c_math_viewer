@@ -1,5 +1,5 @@
-import { Pattern } from "./pattern";
 import { Formula } from "./formula";
+import { SingleOperand } from "./single_operand";
 
 /**
  * Trigonometric functions 
@@ -12,11 +12,11 @@ enum TriType {
     sin, cos, tan, asin, acos, atan2
 }
 
-class Tri extends Pattern {
+class Tri extends SingleOperand {
     private type : TriType;
     
-    constructor(first : Formula, second : Formula, type : TriType) {
-        super(first, second);
+    constructor(str : string, op : Formula, type : TriType) {
+        super(str, op);
         this.type = type;
     }
 }

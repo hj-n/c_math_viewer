@@ -1,6 +1,5 @@
-import { Pattern } from "./pattern";
-
 import { Formula } from "./formula";
+import { SingleOperand } from "./single_operand";
 
 /**
  * Logarithm 
@@ -11,11 +10,11 @@ enum LogType {
     log, log2, log10, log1p
 }
 
-class Log extends Pattern {
+class Log extends SingleOperand {
     type : LogType
 
-    constructor(first : Formula, second : Formula, type : LogType) {
-        super(first, second);
+    constructor(str : string, op : Formula, type : LogType) {
+        super(str, op);
         this.type = type;
     }
 

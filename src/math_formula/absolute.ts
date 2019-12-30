@@ -1,7 +1,6 @@
-import { Pattern } from "./pattern";
 
 
 
-class Abs extends Pattern {
+class Abs extends SingleOperand {
 
 }

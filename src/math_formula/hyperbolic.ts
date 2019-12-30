@@ -1,5 +1,6 @@
 import { Pattern } from "./pattern";
 import { Formula } from "./formula";
+import { SingleOperand } from "./single_operand";
 
 /**
  * Hyperbolic functions
@@ -11,11 +12,11 @@ enum HypType {
     sinh, cosh, tanh, acosh, asinh, atanh
 }
 
-class Hyp extends Pattern {
+class Hyp extends SingleOperand {
     private type : HypType;
 
-    constructor(first : Formula, second : Formula, type : HypType) {
-        super(first, second);
+    constructor(str : string, op : Formula, type : HypType) {
+        super(str, op);
         this.type = type;
     }
 }

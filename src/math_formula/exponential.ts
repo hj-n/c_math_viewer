@@ -13,8 +13,8 @@ enum ExpType {
 class Exp extends Pattern {
     type : ExpType;
 
-    constructor(first : Formula, second : Formula, type : ExpType) {
-        super(first, second);
+    constructor(str : string, first : Formula, second : Formula, type : ExpType) {
+        super(str, first, second);
         this.type = type;
     }
 

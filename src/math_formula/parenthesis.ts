@@ -1,5 +1,5 @@
-import { Pattern } from "./pattern";
+import { SingleOperand } from "./single_operand";
 
-class Paren extends Pattern {
+export class Paren extends SingleOperand {
     
 }
