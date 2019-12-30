@@ -1,3 +1,6 @@
+import { Formula } from "./formula";
+import { Pattern } from "./pattern";
+
 /** 
  * Exponential functions
  * exp, ldexp, expml

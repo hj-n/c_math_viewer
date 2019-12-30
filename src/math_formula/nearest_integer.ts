@@ -1,3 +1,7 @@
+import { Pattern } from "./pattern";
+
+import { Formula } from "./formula";
+
 enum NearType {
     ceil, floor, trunc, round
 }

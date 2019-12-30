@@ -1,3 +1,6 @@
+import { Pattern } from "./pattern";
+import { Formula } from "./formula";
+
 /**
  * Trigonometric functions 
  * sin, cos, tan, asin, acos, atan2

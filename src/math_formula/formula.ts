@@ -1,5 +1,7 @@
 
 
-class Formula {
+export class Formula {
 
+    constructor() {
+    }
 }

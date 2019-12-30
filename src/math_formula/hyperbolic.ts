@@ -1,3 +1,5 @@
+import { Pattern } from "./pattern";
+import { Formula } from "./formula";
 
 /**
  * Hyperbolic functions

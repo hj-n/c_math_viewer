@@ -1,9 +1,10 @@
+import { Formula } from "./formula";
 
 /**
  * Base type of the math formula pattern
  */
 
-class Pattern extends Formula{
+export class Pattern extends Formula{
     private op_first : Formula;
     private op_second : Formula;
 

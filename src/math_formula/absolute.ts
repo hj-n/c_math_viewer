@@ -1,3 +1,4 @@
+import { Pattern } from "./pattern";
 
 
 
