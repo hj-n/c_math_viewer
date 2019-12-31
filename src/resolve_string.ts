@@ -13,6 +13,8 @@ import { RootType, Root } from "./math_formula/root";
 import { Hypot } from "./math_formula/hypotenues";
 import { TriType, Tri } from "./math_formula/trigonometric";
 import { TriD } from "./math_formula/trigonometric_double";
+import { ErrType, Err } from "./math_formula/error";
+import { GammaType, Gamma } from "./math_formula/gamma";
 
 /* ============================================================== */
 /* HELPER FUNCTIONs / INTERFACE */
@@ -186,6 +188,22 @@ function tri_double_formula(str : string, argument : string) : Formula {
     else return new Var(str);
 }
 
+function err_formula(str : string, argument : string, type : ErrType) : Formula {
+    let parsed_result : Parsed_Result = argument_parsing(argument, 1);
+    if(parsed_result.is_success) {
+        return new Err(str, resolve_pattern(parsed_result.args[0]), type);
+    }
+    else return new Var(str);
+}
+
+function gamma_formula(str : string, argument : string, type : GammaType) : Formula {
+    let parsed_result : Parsed_Result = argument_parsing(argument, 1);
+    if(parsed_result.is_success) {
+        return new Gamma(str, resolve_pattern(parsed_result.args[0]), type);
+    }
+    else return new Var(str);
+}
+
 /* END OF HELPERs */
 /* ============================================================== */
 
@@ -302,6 +320,12 @@ function make_function_matching(str : string) : Formula {
         case "catanh"   : case "catanhf"  : case "catanhl"  : return tri_formula(str, argument, TriType.atanh);
         // Trigonometric_double
         case "atan2"    : case "atan2f"   : case "atan2l"   : return tri_double_formula(str, argument);
+        // Error
+        case "erf"      : case "erff"     : case "erfl"     : return err_formula(str, argument, ErrType.erf);
+        case "erfc"     : case "erfcf"    : case "erfcl"    : return err_formula(str, argument, ErrType.erfc);
+        // Gamma
+        case "tgamma"   : case "tgammaf"  : case "tgammal"  : return gamma_formula(str, argument, GammaType.tgamma);
+        case "lgamma"   : case "lgammaf"  : case "lgammal"  : return gamma_formula(str, argument, GammaType.lgamma);
         // default
         default         : return new Var(str);
     }
@@ -324,7 +348,6 @@ export function resolve_pattern (pattern : string) : Formula {
     }
     else if(pattern.search(math_arithmetic_contains) >= 0) {   // arithmetic
         return make_arithmetic_instance(pattern);
-
     }
     else {     // constant (variable)
         return make_const_instance(pattern);
