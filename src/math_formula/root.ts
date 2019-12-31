@@ -1,11 +1,19 @@
 import { Formula } from "./formula";
 import { SingleOperand } from "./single_operand";
 
-enum RootType {
+/**
+ * Root functions
+ * 
+ * sqrt, sqrtf, sqrtl : sqrt
+ * cbrt, cbrtf, cbrtl : cbrt
+ * 
+ */
+
+export enum RootType {
     sqrt, cbrt
 }
 
-class Root extends SingleOperand {
+export class Root extends SingleOperand {
     type : RootType;
 
     constructor(str: string, op : Formula,  type : RootType) {

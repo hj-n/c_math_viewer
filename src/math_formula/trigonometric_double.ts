@@ -1,13 +1,14 @@
 import { Pattern } from "./pattern";
 import { Formula } from "./formula";
 
+
 /**
- * pow, powf, powl
+ * atan2, atan2f, atan2l
  */
 
-export class Pow extends Pattern {
+export class TriD extends Pattern {
 
-    constructor(str: string, first: Formula, second: Formula) {
+    constructor(str: string, first: Formula, second : Formula) {
         super(str, first, second);
     }
 }

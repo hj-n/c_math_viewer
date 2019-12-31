@@ -3,14 +3,17 @@ import { Pattern } from "./pattern";
 
 /** 
  * Exponential functions
- * exp, ldexp, expml
+ * exp, expf, expl (single argument)
+ * exp2, exp2f, exp2l (single argument)
+ * expm1, expm1f, expm1l (single argument)
+ * ldexp, ldexpf, ldexpl (double argument)
  */
 
-enum ExpType {
-    exp, ldexp, expml
+export enum ExpType {
+    exp, exp2, expm1, ldexp
 }
 
-class Exp extends Pattern {
+export class Exp extends Pattern {
     type : ExpType;
 
     constructor(str : string, first : Formula, second : Formula, type : ExpType) {

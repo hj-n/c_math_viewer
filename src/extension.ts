@@ -23,8 +23,14 @@ function temp_testing() {
 	resolve_pattern("(ss(xxx + ssd) / dd(ss, dd_d))");
 	resolve_pattern("(sss(sdds)) + cc(sds, asd)")
 	console.log("===================");
-	let temp : Abs = resolve_pattern("abs(fabs(a + b ))") as Abs;
+	let temp : Formula = resolve_pattern("hypot(fabs(a + b ), acos(x))") as Abs;
 	console.log(temp);
+	let temp2 : Formula = resolve_pattern("atan2f (hypot(fabs(a + b ), acos(x  )), xx  )")
+	console.log(temp2);
+	let temp3 : Formula = resolve_pattern("( round(yy) +atan2f (hypot(fabs(a + b ), acos(x  )), xx  ))")
+	console.log(temp3);
+	let temp4 : Formula = resolve_pattern("( roundx(yy) +atan2f (hypot(fabs(a + b ), acos(x  )), xx  ))")
+	console.log(temp4);
 	console.log("==================");
 	return;
 }

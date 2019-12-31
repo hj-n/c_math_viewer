@@ -2,11 +2,23 @@
 import { Formula } from "./formula";
 import { SingleOperand } from "./single_operand";
 
-enum NearType {
+/**
+ * Nearest Integer
+ * 
+ * ceil, ceilf, ceill : ceil
+ * floor, floorf, floorl : floor
+ * trunc, truncf, truncl : trunc
+ * round, roundf, roundl 
+ * lround, lroundf, lroundl 
+ * llround, llroundf, llroundl : round
+ */
+
+
+export enum NearType {
     ceil, floor, trunc, round
 }
 
-class Near extends SingleOperand {
+export class Near extends SingleOperand {
     type : NearType;
 
     constructor(str : string, op : Formula, type : NearType) {
