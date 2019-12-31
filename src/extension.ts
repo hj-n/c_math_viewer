@@ -6,6 +6,7 @@ import { resolve_pattern } from "./resolve_string";
 import { Formula } from './math_formula/formula';
 import { resolvePtr } from 'dns';
 import { Pattern } from './math_formula/pattern';
+import { Abs } from './math_formula/absolute';
 
 
 
@@ -22,14 +23,8 @@ function temp_testing() {
 	resolve_pattern("(ss(xxx + ssd) / dd(ss, dd_d))");
 	resolve_pattern("(sss(sdds)) + cc(sds, asd)")
 	console.log("===================");
-
-	let temp : string = "ssss + ssdd";
+	let temp : Abs = resolve_pattern("abs(fabs(a + b ))") as Abs;
 	console.log(temp);
-	console.log(temp.slice(0, 5).trim());
-	console.log(temp.slice(0, 5).trim().length);
-	console.log(temp.slice(6).trim());
-
-
 	console.log("==================");
 	return;
 }
