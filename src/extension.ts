@@ -4,9 +4,7 @@ import * as vscode from 'vscode';
 
 import { resolve_pattern } from "./resolve_string";
 import { Formula } from './math_formula/formula';
-import { resolvePtr } from 'dns';
-import { Pattern } from './math_formula/pattern';
-import { Abs } from './math_formula/absolute';
+import { extract_function_string } from './extract_string';
 
 
 
@@ -23,7 +21,7 @@ function temp_testing() {
 	resolve_pattern("(ss(xxx + ssd) / dd(ss, dd_d))");
 	resolve_pattern("(sss(sdds)) + cc(sds, asd)")
 	console.log("===================");
-	let temp : Formula = resolve_pattern("hypot(fabs(a + b ), acos(x))") as Abs;
+	let temp : Formula = resolve_pattern("hypot(fabs(a + b ), acos(x))");
 	console.log(temp);
 	let temp2 : Formula = resolve_pattern("atan2f (hypot(fabs(a + b ), acos(x  )), xx  )")
 	console.log(temp2);
@@ -47,13 +45,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 	vscode.languages.registerHoverProvider('c', {
 		provideHover(document, position, token) {
-			const range = document.getWordRangeAtPosition(position);
-			const word : string = document.getText(range);
-			
+			const word = extract_function_string(document, position);
 			return new vscode.Hover(word);
-				
 		}
 	});
+
 	
 
 }

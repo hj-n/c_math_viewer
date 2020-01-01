@@ -1,10 +1,9 @@
-import { stringify } from "querystring";
 
-import {Formula} from "./math_formula/formula";
-import {Var} from "./math_formula/variable";
-import {Arith, ArithType} from "./math_formula/arithmetic";
-import {Paren} from "./math_formula/parenthesis";
-import {Abs} from "./math_formula/absolute";
+import { Formula } from "./math_formula/formula";
+import { Var } from "./math_formula/variable";
+import { Arith, ArithType } from "./math_formula/arithmetic";
+import { Paren } from "./math_formula/parenthesis";
+import { Abs } from "./math_formula/absolute";
 import { Exp, ExpType } from "./math_formula/exponential";
 import { LogType, Log } from "./math_formula/logarithm";
 import { NearType, Near } from "./math_formula/nearest_integer";
@@ -241,12 +240,12 @@ function make_arithmetic_instance(str : string) : Formula {
     let op_right : Formula = resolve_pattern(str.slice(i + 1).trim());
 
     switch(arith) {
-        case "+" : { return new Arith(str, op_left, op_right, ArithType.add); }
-        case "-" : { return new Arith(str, op_left, op_right, ArithType.sub); }
-        case "*" : { return new Arith(str, op_left, op_right, ArithType.mul); }
-        case "/" : { return new Arith(str, op_left, op_right, ArithType.div); }
-        case "%" : { return new Arith(str, op_left, op_right, ArithType.mod); }
-        default  : { return new Var(str); }  // actually, never happen (checked before function call)
+        case "+" : return new Arith(str, op_left, op_right, ArithType.add); 
+        case "-" : return new Arith(str, op_left, op_right, ArithType.sub); 
+        case "*" : return new Arith(str, op_left, op_right, ArithType.mul); 
+        case "/" : return new Arith(str, op_left, op_right, ArithType.div); 
+        case "%" : return new Arith(str, op_left, op_right, ArithType.mod); 
+        default  : return new Var(str);   // actually, never happen (checked before function call)
     }
 }
 
