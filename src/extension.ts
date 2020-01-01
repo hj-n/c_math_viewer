@@ -6,6 +6,8 @@ import { resolve_pattern } from "./resolve_string";
 import { Formula } from './math_formula/formula';
 import { extract_function_string } from './extract_string';
 import { Var } from './math_formula/variable';
+import { extensions } from 'vscode';
+import { MessageChannel } from 'worker_threads';
 
 
 
@@ -46,11 +48,53 @@ export function activate(context: vscode.ExtensionContext) {
 	// Temporary testing. Will be deleted when releasing
 	temp_testing();
 
+	// TESTING HTML VIEWER
+	let currentPanel: vscode.WebviewPanel = vscode.window.createWebviewPanel(
+		"test", "TEst", vscode.ViewColumn.Active, {
+			enableScripts: true,
+			retainContextWhenHidden: true
+		}
+	);
+
+	let html : string = `
+	<head>
+		<script type="text/javascript" async
+			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+		</script>
+	</head>	
+	<body>
+		$$ x = 1 $$
+		sssssss
+	</body>
+	
+	`
+	currentPanel.webview.html = html;
+	currentPanel.reveal(vscode.ViewColumn.One, true);
+	
+	let view = currentPanel.webview;
+	
+	// END OF TESTING
+	
+	
+
+
 	vscode.languages.registerHoverProvider('c', {
 		provideHover(document, position, token) {
 			const sig_range = document.getWordRangeAtPosition(position);
 			const signature = document.getText(sig_range);
 			const pattern = extract_function_string(document, position);
+
+			////////////
+
+			
+
+				////////////
+
+
+
+
+
+
 
 			if(pattern == "") {
 				return new vscode.Hover("Not a function");
@@ -61,8 +105,16 @@ export function activate(context: vscode.ExtensionContext) {
 					return new vscode.Hover("function");
 				}
 				else{
-					let test : vscode.MarkdownString = new vscode.MarkdownString("## ssss \n # s");
-					return new vscode.Hover(test);
+					
+					
+					let test : vscode.MarkdownString = new vscode.MarkdownString("## ssss \n $x + y$");
+					
+				
+					
+					
+
+					
+					return new vscode.Hover(new vscode.MarkdownString("![equation](" + "./test.png" + ")" ));
 				}
 			}
 			
