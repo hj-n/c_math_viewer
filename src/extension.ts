@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import { resolve_pattern } from "./resolve_string";
 import { Formula } from './math_formula/formula';
 import { extract_function_string } from './extract_string';
+import { Var } from './math_formula/variable';
 
 
 
@@ -29,6 +30,8 @@ function temp_testing() {
 	console.log(temp3);
 	let temp4 : Formula = resolve_pattern("( roundx(yy) +atan2f (hypot(fabs(a + b ), acos(x  )), xx  ))")
 	console.log(temp4);
+	let temp5 : Formula = resolve_pattern("abs(cos(b) +  acosh( d + range(3.24)    ))")
+	console.log(temp5);
 	console.log("==================");
 	return;
 }
@@ -45,12 +48,26 @@ export function activate(context: vscode.ExtensionContext) {
 
 	vscode.languages.registerHoverProvider('c', {
 		provideHover(document, position, token) {
-			const word = extract_function_string(document, position);
-			return new vscode.Hover(word);
+			const sig_range = document.getWordRangeAtPosition(position);
+			const signature = document.getText(sig_range);
+			const pattern = extract_function_string(document, position);
+
+			if(pattern == "") {
+				return new vscode.Hover("Not a function");
+			}	
+			else {
+				let formula : Formula = resolve_pattern(pattern);
+				if (formula instanceof Var){
+					return new vscode.Hover("function");
+				}
+				else{
+					let test : vscode.MarkdownString = new vscode.MarkdownString("## ssss \n # s");
+					return new vscode.Hover(test);
+				}
+			}
+			
 		}
 	});
-
-	
 
 }
 

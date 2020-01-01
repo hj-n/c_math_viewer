@@ -266,6 +266,7 @@ function make_function_matching(str : string) : Formula {
     let signature : string = str.slice(0, i).trim();
     let argument : string = str.slice(i+1, str.length - 1).trim();
 
+
     switch(signature) {
         // Absolute
         case "abs"      : case "labs"     : case "llabs"    :
@@ -336,9 +337,9 @@ function make_function_matching(str : string) : Formula {
 export function resolve_pattern (pattern : string) : Formula {
 
     let math_parenthesis = /^\(.*\)$/;
-    let math_function = /^[A-Za-z0-9_ ]*\([A-Za-z0-9_,()\+\-\*%\/ ]*\)$/;
+    let math_function = /^[A-Za-z0-9_ ]*\([A-Za-z0-9_,()\+\-\*%\/. ]*\)$/;
     let math_arithmetic_contains = /[\+\-\*%\/]/;
-
+    
     if(math_parenthesis.test(pattern) && check_parenthesis_matching(pattern)) {    // parenthesis
         return make_parenthesis_matching(pattern);
     }
