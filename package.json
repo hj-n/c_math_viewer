@@ -1,8 +1,9 @@
 {
 	"name": "c-math-viewer",
-	"displayName": "c_math_viewer",
+	"displayName": "hovers math formula of c mathematical library functions",
 	"description": "Converting math.h functions into math form",
-	"version": "0.0.1",
+	"icon" : "http/images/logo.png",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
