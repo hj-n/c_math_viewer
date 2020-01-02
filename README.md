@@ -10,7 +10,7 @@ log(sinf(atan2f(hypot(abs(a + b), abs(c)), d + f)).
 This is inefficient!!
 It will be better to show the functionality with common math formula form:
 
-$\log_e{\sin({\arctan(\sqrt{|a+b|^2 + |c|^2}/(d+f))})}$
+![image](images/equation.png)
 
 Therefore, I implemented the plugin in which the users can directly see the following formula, driven by the overlapped math function.
 
@@ -18,7 +18,7 @@ Therefore, I implemented the plugin in which the users can directly see the foll
 
 #### Hovering math formula
 
-![image](https://github.com/jeonhyun97/c_math_viewer/blob/master/images/demo.gif)
+![image](images/demo.gif)
 
 Quite intuitive. 
 First, write the c or c++ code with the functions & constants from c math libraries. And if you point the math function with the mouse, the plugin parses the function and its arguments recursively and hovers the generated Unicode-style math formula. 

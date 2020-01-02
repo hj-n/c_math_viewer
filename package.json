@@ -9,7 +9,7 @@
 		"vscode": "^1.41.0"
 	},
 	"categories": [
-		"Other"
+		"Formatters", "Programming Languages"
 	],
 	"activationEvents": [
 		"onCommand:extension.helloWorld",
