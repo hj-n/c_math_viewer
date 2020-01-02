@@ -19,14 +19,16 @@ export enum NearType {
 }
 
 export class Near extends SingleOperand {
-    accept(visitor: import("../formula_visitor").formula_visitor) {
-        throw new Error("Method not implemented.");
-    }
+    
     type : NearType;
 
     constructor(str : string, op : Formula, type : NearType) {
         super(str, op);
         this.type = type;
+    }
+
+    accept(visitor: import("../formula_visitor").formula_visitor) : any{
+        return visitor.visitNear(this);
     }
 }
 

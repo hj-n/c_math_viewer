@@ -7,8 +7,8 @@ import { Formula } from "./formula";
 export class Pattern extends Formula{
     
 
-    private op_first : Formula;
-    private op_second : Formula;
+    op_first : Formula;
+    op_second : Formula;
 
     constructor(str : string, first : Formula, second : Formula) {
         super(str);

@@ -14,13 +14,14 @@ export enum RootType {
 }
 
 export class Root extends SingleOperand {
-    accept(visitor: import("../formula_visitor").formula_visitor) {
-        throw new Error("Method not implemented.");
-    }
+    
     type : RootType;
 
     constructor(str: string, op : Formula,  type : RootType) {
         super(str, op);
         this.type = type;
+    }
+    accept(visitor: import("../formula_visitor").formula_visitor) : any  {
+        return visitor.visitRoot(this);
     }
 }

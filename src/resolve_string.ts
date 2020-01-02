@@ -290,7 +290,8 @@ function make_function_matching(str : string) : Formula {
         case "lround"   : case "lroundf"  : case "lroundl"  : 
         case "llround"  : case "llroundf" : case "llroundl" : return nearest_int_formula(str, argument, NearType.round);
         // Pow
-        case "pow"      : case "powf"     : case "powl"     : return pow_formula(str, argument);
+        case "pow"      : case "powf"     : case "powl"     : 
+        case "cpow"     : case "cpowf"    : case "cpowl"    : return pow_formula(str, argument);
         // Root
         case "sqrt"     : case "sqrtf"    : case "sqrtl"    : return root_formula(str, argument, RootType.sqrt);
         case "cbrt"     : case "cbrtf"    : case "cbrtl"    : return root_formula(str, argument, RootType.cbrt);

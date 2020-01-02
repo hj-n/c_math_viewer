@@ -6,9 +6,6 @@ import { resolve_pattern } from "./resolve_string";
 import { Formula } from './math_formula/formula';
 import { extract_function_string } from './extract_string';
 import { Var } from './math_formula/variable';
-import { extensions } from 'vscode';
-import { MessageChannel } from 'worker_threads';
-import { resolveCliPathFromVSCodeExecutablePath } from 'vscode-test';
 import { generate_formula_visitor } from './gen_formula_visitor';
 
 
@@ -57,7 +54,6 @@ export function activate(context: vscode.ExtensionContext) {
 			const pattern = extract_function_string(document, position);
 
 
-
 			if(pattern == "") {
 				return new vscode.Hover("Not a function");
 			}	
@@ -67,7 +63,7 @@ export function activate(context: vscode.ExtensionContext) {
 					return new vscode.Hover("function");
 				}
 				else{
-					return new vscode.Hover(new vscode.MarkdownString(formula.accept(new generate_formula_visitor())));
+					return new vscode.Hover(new vscode.MarkdownString( "## " + formula.accept(new generate_formula_visitor())));
 				}
 			}
 			

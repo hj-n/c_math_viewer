@@ -14,14 +14,16 @@ export enum LogType {
 }
 
 export class Log extends SingleOperand {
-    accept(visitor: import("../formula_visitor").formula_visitor) {
-        throw new Error("Method not implemented.");
-    }
+    
     type : LogType
 
     constructor(str : string, op : Formula, type : LogType) {
         super(str, op);
         this.type = type;
+    }
+
+    accept(visitor: import("../formula_visitor").formula_visitor) : any {
+        return visitor.visitLog(this);
     }
 
 }

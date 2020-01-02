@@ -14,9 +14,7 @@ export enum ExpType {
 }
 
 export class Exp extends Pattern {
-    accept(visitor: import("../formula_visitor").formula_visitor) {
-        throw new Error("Method not implemented.");
-    }
+   
     type : ExpType;
 
     constructor(str : string, first : Formula, second : Formula, type : ExpType) {
@@ -24,6 +22,9 @@ export class Exp extends Pattern {
         this.type = type;
     }
 
+    accept(visitor: import("../formula_visitor").formula_visitor) : any {
+        return visitor.visitExp(this);
+    }
 }
 
 

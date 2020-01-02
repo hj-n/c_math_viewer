@@ -1,54 +1,112 @@
 import { formula_visitor } from "./formula_visitor";
 import { Abs } from "./math_formula/absolute";
-import { Arith } from "./math_formula/arithmetic";
-import { Err } from "./math_formula/error";
-import { Exp } from "./math_formula/exponential";
+import { Arith, ArithType } from "./math_formula/arithmetic";
+import { Err, ErrType } from "./math_formula/error";
+import { Exp, ExpType } from "./math_formula/exponential";
 import { Gamma } from "./math_formula/gamma";
 import { Hypot } from "./math_formula/hypotenues";
-import { Log } from "./math_formula/logarithm";
-import { Near } from "./math_formula/nearest_integer";
+import { Log, LogType } from "./math_formula/logarithm";
+import { Near, NearType } from "./math_formula/nearest_integer";
 import { Paren } from "./math_formula/parenthesis";
 import { Pow } from "./math_formula/power";
-import { Root } from "./math_formula/root";
+import { Root, RootType } from "./math_formula/root";
 import { Tri } from "./math_formula/trigonometric";
 import { TriD } from "./math_formula/trigonometric_double";
 import { Var, VarType } from "./math_formula/variable";
-import { stringify } from "querystring";
 
 export class generate_formula_visitor extends formula_visitor {
+    
+    private ts : string = " ";   // thin space
+    private hs : string = " ";   // hair space
+
     visitAbs(formula: Abs): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        return "|" + this.hs + op_string + this.hs + "|"
     }   
     visitArith(formula: Arith): string {
-        throw new Error("Method not implemented.");
+        let op_first : string  = formula.op_first.accept(this);
+        let op_second : string = formula.op_second.accept(this);
+        switch(formula.type) {
+            case ArithType.add : return op_first + " + " + op_second;
+            case ArithType.sub : return op_first + " - " + op_second;
+            case ArithType.mul : return op_first + " × " + op_second;
+            case ArithType.div : return op_first + " / " + op_second;
+            case ArithType.mod : return op_first + " 𝐦𝐨𝐝 " + op_second;
+        }
     }
     visitErr(formula: Err): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        let erf : string = "𝐞𝐫𝐟" + this.hs + "⟮" + this.hs + op_string + this.hs + "⟯";
+        switch(formula.type) {
+            case ErrType.erf  : return erf;
+            case ErrType.erfc : return "⟮" + this.hs + "1 - " + erf + this.hs + "⟯";
+        }
     }
     visitExp(formula: Exp): string {
-        throw new Error("Method not implemented.");
+        let op_first : string  = formula.op_first.accept(this);
+        let op_second : string = formula.op_second.accept(this);
+        let e : string = "𝐞" + this.ts + "^" + this.ts;
+        let two : string = "2" + this.ts + "^" + this.ts;
+        switch(formula.type) {
+            case ExpType.exp   : return e + "[" + this.ts + op_first  + this.ts + "]";
+            case ExpType.exp2  : return two + "[" + this.ts + op_first  + this.ts + "]";
+            case ExpType.expm1 : return "⟮" + this.hs + e + "[" + this.ts + op_first  + this.ts + "]" + " - 1" + this.hs + "⟯";
+            case ExpType.ldexp : return op_first + " × " + two + "[" + this.ts + op_second  + this.ts + "]";
+        }
     }
     visitGamma(formula: Gamma): string {
         let op_string : string = formula.op.accept(this);
-        return "𝚪⟮" + op_string + "⟯";
+        return "𝚪" + this.hs+"⟮" + this.hs +  op_string + this.hs + "⟯";
     }
     visitHypot(formula: Hypot): string {
-        throw new Error("Method not implemented.");
+        let op_first : string  = formula.op_first.accept(this);
+        let op_second : string = formula.op_second.accept(this);
+        return "√" + "⟮" + this.hs + op_first + "² + " + op_second + "²" + this.hs + "⟯";
     }
     visitLog(formula: Log): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        if((formula.op instanceof Arith || formula.op instanceof Exp || formula.op instanceof Pow) 
+                && formula.type != LogType.log1p) {
+            op_string = "⟮" + this.hs + op_string + this.hs + "⟯";
+        }
+        switch(formula.type) {
+            case LogType.log   : return "𝐥𝐨𝐠ₑ" + this.hs +op_string;
+            case LogType.log2  : return "𝐥𝐨𝐠₂" + this.hs + op_string;
+            case LogType.log10 : return "𝐥𝐨𝐠₁₀" + this.hs +op_string;
+            case LogType.log1p : return "𝐥𝐨𝐠ₑ" + this.hs + "⟮" + this.hs + "1 + " + op_string + this.hs + "⟯";
+        }
     }
     visitNear(formula: Near): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        switch(formula.type) {
+            case NearType.ceil  : return "⌈" + this.ts + op_string + this.ts + "⌉";
+            case NearType.floor : return "⌊" + this.ts + op_string + this.ts + "⌋" ;
+            case NearType.trunc : return "⌊" + this.ts + op_string + this.ts + "⌋" ;
+            case NearType.round : return "𝐫𝐨𝐮𝐧𝐝" + this.hs + "⟮" + this.ts + op_string + this.ts + "⟯" ;
+        }
+
     }
     visitParen(formula: Paren): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        return "⟮" + this.ts + op_string + this.ts + "⟯";
     }
     visitPow(formula: Pow): string {
-        throw new Error("Method not implemented.");
+        let op_first : string  = formula.op_first.accept(this);
+        let op_second : string = formula.op_second.accept(this);
+        if(formula.op_first instanceof Arith || 
+           formula.op_first instanceof Exp   ||
+           formula.op_first instanceof Pow) {
+               op_first = "⟮" + this.ts + op_first  + this.ts + "⟯";
+        }
+        return op_first + this.ts + "^" + this.ts + "[" + this.ts + op_second + this.ts + "]";
     }
     visitRoot(formula: Root): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        op_string = "⟮" + this.ts + op_string  + this.ts + "⟯";
+        switch(formula.type) {
+            case RootType.sqrt : return "√" + op_string;
+            case RootType.cbrt : return "∛" + op_string;
+        }
     }
     visitTri(formula: Tri): string {
         throw new Error("Method not implemented.");
@@ -58,20 +116,20 @@ export class generate_formula_visitor extends formula_visitor {
     }
     visitVar(formula: Var): string {
         switch(formula.type) {
-            case VarType.E : return "𝐞";
-            case VarType.LOG2E : return "𝐥𝐨𝐠₂𝐞"
-            case VarType.LOG10E : return "𝐥𝐨𝐠₁₀𝐞"
-            case VarType.LN2 : return "𝐥𝐧2"
-            case VarType.LN10 : return "𝐥𝐧10"
-            case VarType.PI : return "𝛑"
-            case VarType.PI_2 : return "𝛑/2"
-            case VarType.PI_4 : return "𝛑/4"
-            case VarType._1_PI : return "1/𝛑"
-            case VarType._2_PI : return "2/𝛑"
+            case VarType.E         : return "𝐞";
+            case VarType.LOG2E     : return "𝐥𝐨𝐠₂𝐞"
+            case VarType.LOG10E    : return "𝐥𝐨𝐠₁₀𝐞"
+            case VarType.LN2       : return "𝐥𝐨𝐠ₑ2"
+            case VarType.LN10      : return "𝐥𝐨𝐠ₑ10"
+            case VarType.PI        : return "𝛑"
+            case VarType.PI_2      : return "𝛑/2"
+            case VarType.PI_4      : return "𝛑/4"
+            case VarType._1_PI     : return "1/𝛑"
+            case VarType._2_PI     : return "2/𝛑"
             case VarType._2_SQRTPI : return "2/√𝛑"
-            case VarType.SQRT2 : return "√2"
-            case VarType.SQRT1_2 : return "1/√2"
-            case VarType.ELSE : return this.str_to_formula_style(formula.str);
+            case VarType.SQRT2     : return "√2"
+            case VarType.SQRT1_2   : return "1/√2"
+            case VarType.ELSE      : return this.str_to_formula_style(formula.str);
         }
     }
 
