@@ -4,7 +4,7 @@
 	"description": "Converting math.h functions into math form",
 	"icon" : "https://github.com/jeonhyun97/c_math_viewer/blob/master/images/logo.png",
 	"version": "1.0.0",
-	"publisher": "Hyeon Jeon",
+	"publisher": "Hyeon",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
