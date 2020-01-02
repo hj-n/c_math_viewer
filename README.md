@@ -18,7 +18,7 @@ Therefore, I implemented the plugin in which the users can directly see the foll
 
 #### Hovering math formula
 
-![image](./images/demo.gif)
+![image](https://github.com/jeonhyun97/c_math_viewer/blob/master/images/demo.gif)
 
 Quite intuitive. 
 First, write the c or c++ code with the functions & constants from c math libraries. And if you point the math function with the mouse, the plugin parses the function and its arguments recursively and hovers the generated Unicode-style math formula. 

@@ -2,8 +2,9 @@
 	"name": "c-math-viewer",
 	"displayName": "hovers math formula of c mathematical library functions",
 	"description": "Converting math.h functions into math form",
-	"icon" : "http/images/logo.png",
+	"icon" : "https://github.com/jeonhyun97/c_math_viewer/blob/master/images/logo.png",
 	"version": "1.0.0",
+	"publisher": "Hyeon Jeon",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
