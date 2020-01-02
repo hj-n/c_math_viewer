@@ -1,10 +1,11 @@
 import { Formula } from "./formula";
 
-enum VarType {
+export enum VarType {
     E, LOG2E, LOG10E, LN2, LN10, PI, PI_2, PI_4, _1_PI, _2_PI, _2_SQRTPI, SQRT2, SQRT1_2, ELSE
 }
 
 export class Var extends Formula {
+    
     type : VarType;
 
     constructor(str : string) {
@@ -25,8 +26,10 @@ export class Var extends Formula {
             case "M_SQRT1_2"  : { this.type = VarType.SQRT1_2;   break; }
             default           : { this.type = VarType.ELSE;      break; }  // not pre-defined math.h constants
         }        
-        
 
-        this.type = VarType.E;
+    }
+
+    accept(visitor: import("../formula_visitor").formula_visitor) {
+        return visitor.visitVar(this);
     }
 }

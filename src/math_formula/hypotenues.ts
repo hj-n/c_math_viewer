@@ -7,6 +7,9 @@ import { Formula } from "./formula";
 
 
 export class Hypot extends Pattern {
+    accept(visitor: import("../formula_visitor").formula_visitor) {
+        throw new Error("Method not implemented.");
+    }
 
     constructor(str : string, first : Formula, second : Formula) {
         super(str, first, second);

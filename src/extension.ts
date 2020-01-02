@@ -9,6 +9,7 @@ import { Var } from './math_formula/variable';
 import { extensions } from 'vscode';
 import { MessageChannel } from 'worker_threads';
 import { resolveCliPathFromVSCodeExecutablePath } from 'vscode-test';
+import { generate_formula_visitor } from './gen_formula_visitor';
 
 
 function temp_testing() {
@@ -66,9 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
 					return new vscode.Hover("function");
 				}
 				else{
-					
-					
-					return new vscode.Hover(new vscode.MarkdownString("⟮∛⟮√𝚪⟯"));
+					return new vscode.Hover(new vscode.MarkdownString(formula.accept(new generate_formula_visitor())));
 				}
 			}
 			

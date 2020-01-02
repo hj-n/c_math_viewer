@@ -5,6 +5,8 @@ import { Formula } from "./formula";
  */
 
 export class Pattern extends Formula{
+    
+
     private op_first : Formula;
     private op_second : Formula;
 
@@ -13,4 +15,5 @@ export class Pattern extends Formula{
         this.op_first = first;
         this.op_second = second;
     }
+
 }

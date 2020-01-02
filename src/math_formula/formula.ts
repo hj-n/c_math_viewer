@@ -1,3 +1,4 @@
+import { formula_visitor } from "../formula_visitor";
 
 
 export class Formula {
@@ -8,5 +9,7 @@ export class Formula {
     constructor(str : string) {
         this.str = str;
     }
+
+    accept(visitor : formula_visitor) : any {};
     
 }

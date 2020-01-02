@@ -6,6 +6,9 @@ export enum ArithType {
 }
 
 export class Arith extends Pattern {
+    accept(visitor: import("../formula_visitor").formula_visitor) {
+        throw new Error("Method not implemented.");
+    }
     type : ArithType;
 
     constructor(str : string, first : Formula, second : Formula, type : ArithType) {

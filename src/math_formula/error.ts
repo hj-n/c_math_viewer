@@ -12,6 +12,9 @@ export enum ErrType {
 }
 
 export class Err extends SingleOperand {
+    accept(visitor: import("../formula_visitor").formula_visitor) {
+        throw new Error("Method not implemented.");
+    }
     type : ErrType
 
     constructor(str : string, op : Formula, type : ErrType) {
