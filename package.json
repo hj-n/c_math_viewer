@@ -3,13 +3,14 @@
 	"displayName": "C/C++ MATH Formula Viewer",
 	"description": "hovers math formula of c mathematical library functions",
 	"icon": "images/logo.png",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"publisher": "Hyeon",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
 	"categories": [
-		"Formatters", "Programming Languages"
+		"Formatters",
+		"Programming Languages"
 	],
 	"activationEvents": [
 		"onCommand:extension.helloWorld",
