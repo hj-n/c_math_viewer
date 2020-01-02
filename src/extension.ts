@@ -14,18 +14,31 @@ import { generate_formula_visitor } from './gen_formula_visitor';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log("c file opened!!");	
-
-	// Temporary testing. Will be deleted when releasing
-
 
 	vscode.languages.registerHoverProvider('c', {
 		provideHover(document: vscode.TextDocument, position: vscode.Position, token: any) {
 			const sig_range = document.getWordRangeAtPosition(position);
 			const signature = document.getText(sig_range);
 			const pattern = extract_function_string(document, position);
-
-
+			if(pattern == "") {
+				return new vscode.Hover("");
+			}	
+			else {
+				let formula : Formula = resolve_pattern(pattern);
+				if (formula instanceof Var){
+					return new vscode.Hover("");
+				}
+				else{
+					return new vscode.Hover(new vscode.MarkdownString( "## " + formula.accept(new generate_formula_visitor())));
+				}
+			}
+		}
+	});
+	vscode.languages.registerHoverProvider('cpp', {
+		provideHover(document: vscode.TextDocument, position: vscode.Position, token: any) {
+			const sig_range = document.getWordRangeAtPosition(position);
+			const signature = document.getText(sig_range);
+			const pattern = extract_function_string(document, position);
 			if(pattern == "") {
 				return new vscode.Hover("");
 			}	

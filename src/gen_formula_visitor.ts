@@ -112,15 +112,15 @@ export class generate_formula_visitor extends formula_visitor {
         let op_string : string = formula.op.accept(this);
         op_string = "(" + this.ts + op_string  + this.ts + ")";
         switch(formula.type) {
-            case TriType.sin : return "𝒔𝒊𝒏" + op_string;
-            case TriType.cos : return "𝒄𝒐𝒔" + op_string;
-            case TriType.tan : return "𝒕𝒂𝒏" + op_string;
-            case TriType.asin : return "𝒂𝒔𝒊𝒏" + op_string;
-            case TriType.acos : return "𝒂𝒄𝒐𝒔" + op_string;
-            case TriType.atan : return "𝒂𝒕𝒂𝒏" + op_string;
-            case TriType.sinh : return "𝒔𝒊𝒏𝒉" + op_string;
-            case TriType.cosh : return "𝒄𝒐𝒔𝒉" + op_string;
-            case TriType.tanh : return "𝒕𝒂𝒏𝒉" + op_string;
+            case TriType.sin   : return "𝒔𝒊𝒏" + op_string;
+            case TriType.cos   : return "𝒄𝒐𝒔" + op_string;
+            case TriType.tan   : return "𝒕𝒂𝒏" + op_string;
+            case TriType.asin  : return "𝒂𝒔𝒊𝒏" + op_string;
+            case TriType.acos  : return "𝒂𝒄𝒐𝒔" + op_string;
+            case TriType.atan  : return "𝒂𝒕𝒂𝒏" + op_string;
+            case TriType.sinh  : return "𝒔𝒊𝒏𝒉" + op_string;
+            case TriType.cosh  : return "𝒄𝒐𝒔𝒉" + op_string;
+            case TriType.tanh  : return "𝒕𝒂𝒏𝒉" + op_string;
             case TriType.asinh : return "𝒂𝒔𝒊𝒏𝒉" + op_string;
             case TriType.acosh : return "𝒂𝒄𝒐𝒔𝒉" + op_string;
             case TriType.atanh : return "𝒂𝒕𝒂𝒏𝒉" + op_string;
