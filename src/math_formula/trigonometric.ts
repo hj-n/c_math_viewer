@@ -33,6 +33,7 @@ export class Tri extends SingleOperand {
         super(str, op);
         this.type = type;
     }
+    
     accept(visitor: import("../formula_visitor").formula_visitor) {
         return visitor.visitTri(this);
     }

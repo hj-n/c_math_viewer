@@ -21,6 +21,7 @@ export class Root extends SingleOperand {
         super(str, op);
         this.type = type;
     }
+    
     accept(visitor: import("../formula_visitor").formula_visitor) : any  {
         return visitor.visitRoot(this);
     }

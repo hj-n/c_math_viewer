@@ -19,6 +19,7 @@ export class Err extends SingleOperand {
         super(str, op);
         this.type = type;
     }
+    
     accept(visitor: import("../formula_visitor").formula_visitor) {
         return visitor.visitErr(this);
     }

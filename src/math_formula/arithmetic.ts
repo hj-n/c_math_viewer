@@ -13,6 +13,7 @@ export class Arith extends Pattern {
         super(str, first, second);
         this.type = type;
     }
+    
     accept(visitor: import("../formula_visitor").formula_visitor) {
         return visitor.visitArith(this);
     }
