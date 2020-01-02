@@ -2,8 +2,8 @@
 	"name": "c-math-viewer",
 	"displayName": "C/C++ MATH Formula Viewer",
 	"description": "hovers math formula of c mathematical library functions",
-	"icon" : "images/logo.png",
-	"version": "1.0.0",
+	"icon": "images/logo.png",
+	"version": "1.0.1",
 	"publisher": "Hyeon",
 	"engines": {
 		"vscode": "^1.41.0"
@@ -14,7 +14,7 @@
 	"activationEvents": [
 		"onCommand:extension.helloWorld",
 		"onLanguage:c",
-		"onLanguage:cpp" 
+		"onLanguage:cpp"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -24,7 +24,6 @@
 				"title": "Hello World"
 			}
 		]
-
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -44,14 +43,13 @@
 		"tslint": "^5.20.0",
 		"vscode-test": "^1.2.2"
 	},
-  "homepage": "https://github.com/jeonhyun97/c_math_viewer/blob/master/README.md",
-  "bugs": {
-    "url": "https://github.com/jeonhyun97/c_math_viewer/issues",
-    "email": "jeonhyun97@postech.ac.kr"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jeonhyun97/c_math_viewer.git"
-  }
-	
+	"homepage": "https://github.com/jeonhyun97/c_math_viewer/blob/master/README.md",
+	"bugs": {
+		"url": "https://github.com/jeonhyun97/c_math_viewer/issues",
+		"email": "jeonhyun97@postech.ac.kr"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jeonhyun97/c_math_viewer.git"
+	}
 }
