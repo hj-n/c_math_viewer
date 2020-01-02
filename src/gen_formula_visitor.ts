@@ -10,7 +10,7 @@ import { Near, NearType } from "./math_formula/nearest_integer";
 import { Paren } from "./math_formula/parenthesis";
 import { Pow } from "./math_formula/power";
 import { Root, RootType } from "./math_formula/root";
-import { Tri } from "./math_formula/trigonometric";
+import { Tri, TriType } from "./math_formula/trigonometric";
 import { TriD } from "./math_formula/trigonometric_double";
 import { Var, VarType } from "./math_formula/variable";
 
@@ -109,10 +109,37 @@ export class generate_formula_visitor extends formula_visitor {
         }
     }
     visitTri(formula: Tri): string {
-        throw new Error("Method not implemented.");
+        let op_string : string = formula.op.accept(this);
+        op_string = "(" + this.ts + op_string  + this.ts + ")";
+        switch(formula.type) {
+            case TriType.sin : return "𝒔𝒊𝒏" + op_string;
+            case TriType.cos : return "𝒄𝒐𝒔" + op_string;
+            case TriType.tan : return "𝒕𝒂𝒏" + op_string;
+            case TriType.asin : return "𝒂𝒔𝒊𝒏" + op_string;
+            case TriType.acos : return "𝒂𝒄𝒐𝒔" + op_string;
+            case TriType.atan : return "𝒂𝒕𝒂𝒏" + op_string;
+            case TriType.sinh : return "𝒔𝒊𝒏𝒉" + op_string;
+            case TriType.cosh : return "𝒄𝒐𝒔𝒉" + op_string;
+            case TriType.tanh : return "𝒕𝒂𝒏𝒉" + op_string;
+            case TriType.asinh : return "𝒂𝒔𝒊𝒏𝒉" + op_string;
+            case TriType.acosh : return "𝒂𝒄𝒐𝒔𝒉" + op_string;
+            case TriType.atanh : return "𝒂𝒕𝒂𝒏𝒉" + op_string;
+        }
     }
     visitTriD(formula: TriD): string {
-        throw new Error("Method not implemented.");
+        let op_first : string  = formula.op_first.accept(this);
+        let op_second : string = formula.op_second.accept(this);
+        if(formula.op_first instanceof Arith || 
+           formula.op_first instanceof Exp   ||
+           formula.op_first instanceof Pow   ) {
+               op_first = "⟮" + this.ts + op_first  + this.ts + "⟯";
+        }
+        if(formula.op_second instanceof Arith ||
+           formula.op_second instanceof Exp   ||
+           formula.op_second instanceof Pow   ) {
+                op_second = "⟮" + this.ts + op_second  + this.ts + "⟯";
+        }
+        return "𝒂𝒕𝒂𝒏(" + this.ts + op_first + " / " + op_second + this.ts +")";
     }
     visitVar(formula: Var): string {
         switch(formula.type) {
