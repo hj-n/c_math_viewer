@@ -10,7 +10,7 @@ log(sinf(atan2f(hypot(abs(a + b), abs(c)), d + f)).
 This is inefficient!!
 It will be better to show the functionality with common math formula form:
 
-<img src="images/equation.png" width="300">
+<img src="images/equation.png" width="310">
 
 Therefore, I implemented the plugin in which the users can directly see the following formula, driven by the overlapped math function.
 
@@ -62,6 +62,13 @@ First, write the c or c++ code with the functions & constants from c math librar
 
 Initial release of the plugin
 Hovers generated math formula when the user points certain math function
+
+### 1.0.4
+
+Real Ready for the release 
+(cleanup code, add logo, eliminate unneccesary functionalities)
+
+
 
 
 ## Future plan
