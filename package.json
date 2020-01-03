@@ -3,7 +3,7 @@
 	"displayName": "C/C++ MATH Formula Viewer",
 	"description": "hovers math formula of c mathematical library functions",
 	"icon": "images/logo.png",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"publisher": "Hyeon",
 	"engines": {
 		"vscode": "^1.41.0"
@@ -18,8 +18,7 @@
 		"onLanguage:cpp"
 	],
 	"main": "./out/extension.js",
-	"contributes": {
-	},
+	"contributes": {},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
