@@ -10,7 +10,7 @@ log(sinf(atan2f(hypot(abs(a + b), abs(c)), d + f)).
 This is inefficient!!
 It will be better to show the functionality with common math formula form:
 
-![image](images/equation.png)
+<img src="images/equation.png" width="300">
 
 Therefore, I implemented the plugin in which the users can directly see the following formula, driven by the overlapped math function.
 
