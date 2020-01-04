@@ -3,7 +3,7 @@
 
 ## Motivation
 
-We can use useful mathematical functions in C/C++ by including `math.h` or `cmath` library. However, it is hard to recognize the full functionality of the function at a glance if the function call is deep and complex. The indirect function signature also reduces cognition.  For example, it is hard to know the mathematical meaning of the following code:
+We can utilize useful mathematical functions in C/C++ by including `math.h` or `cmath` library. However, it is hard to recognize the full functionality of the function at a glance if the function call is deep and complex. The indirect function signature also reduces cognition.  For example, it is hard to know the mathematical meaning of the following code:
 ```c
 log(sinf(atan2f(hypot(abs(a + b), abs(c)), d + f)).
 ``` 
